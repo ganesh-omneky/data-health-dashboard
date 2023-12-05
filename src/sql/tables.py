@@ -1,7 +1,7 @@
-from sqlalchemy import String, Text, Date, ForeignKey, DateTime, JSON
-from sqlalchemy.orm import DeclarativeBase
-from sqlalchemy.orm import Mapped, mapped_column
 import datetime
+
+from sqlalchemy import JSON, Date, DateTime, ForeignKey, String, Text
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
 class Base(DeclarativeBase):
@@ -108,6 +108,8 @@ class Campaigns(Base):
     name: Mapped[str] = mapped_column(String(30))
     objective: Mapped[str] = mapped_column(String(20))
     status: Mapped[str] = mapped_column(String(25))
+    created_at: Mapped[datetime.date] = mapped_column()
+    updated_at: Mapped[datetime.date] = mapped_column()
 
     def __repr__(self):
         return (
@@ -125,6 +127,8 @@ class AdGroups(Base):
     name: Mapped[str] = mapped_column(String(200))
     objective: Mapped[str] = mapped_column(String(20))
     status: Mapped[str] = mapped_column(String(25))
+    created_at: Mapped[datetime.date] = mapped_column()
+    updated_at: Mapped[datetime.date] = mapped_column()
 
     def __repr__(self):
         return (
@@ -144,6 +148,8 @@ class Ads(Base):
     landing_page_url: Mapped[str] = mapped_column(String(255))
     status: Mapped[str] = mapped_column(String(20))
     cta: Mapped[str] = mapped_column(String(20))
+    created_at: Mapped[datetime.date] = mapped_column()
+    updated_at: Mapped[datetime.date] = mapped_column()
 
     def __repr__(self):
         return f"Ad(id={self.id}, ad_type={self.ad_type}, platform_ad_id={self.platform_ad_id})"
@@ -206,6 +212,8 @@ class ImageAsset(Base):
     no_of_faces: Mapped[int] = mapped_column()
     clip_image_desc: Mapped[str] = mapped_column(Text)
     blip2_image_desc: Mapped[str] = mapped_column(Text)
+    created_at: Mapped[datetime.date] = mapped_column()
+    updated_at: Mapped[datetime.date] = mapped_column()
 
     def __repr__(self):
         return (
@@ -238,6 +246,8 @@ class TextAsset(Base):
     type: Mapped[str] = mapped_column(String(5))
     text: Mapped[str] = mapped_column(Text)
     sentiment: Mapped[str] = mapped_column(String(8))
+    created_at: Mapped[datetime.date] = mapped_column()
+    updated_at: Mapped[datetime.date] = mapped_column()
 
     def __repr__(self):
         return (
@@ -273,6 +283,8 @@ class VideoAsset(Base):
     is_audio_present: Mapped[bool] = mapped_column()
     height: Mapped[int] = mapped_column()
     width: Mapped[int] = mapped_column()
+    created_at: Mapped[datetime.date] = mapped_column()
+    updated_at: Mapped[datetime.date] = mapped_column()
 
     def __repr__(self):
         return (

@@ -2,3 +2,6 @@ streamlit
 sqlalchemy
 boto3
 botocore
+pymysql
+sshtunnel
+tqdm
